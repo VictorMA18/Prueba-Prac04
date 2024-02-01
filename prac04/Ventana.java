@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
-
+import java.io.OutputStream;
+import java.io.PrintStream;
 import javax.swing.*;
+
 
 public class Ventana extends JFrame {
 
@@ -59,11 +61,23 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetearTablero();
+                TerminalGUI terminalGUI1 = new TerminalGUI();
+                // Muestra la ventana
+                terminalGUI1.setVisible(true);
+                System.out.println("****************************************************");
+                System.out.println("Se inicio una nueva partida");
+                System.out.println("****************************************************");         
+                System.out.println("****************************************************");
+                System.out.println("Los soldados creados para el ejercito Azul");
+                System.out.println("****************************************************"); 
                 Ejercito e1 = new Ejercito(1);
-                Ejercito e2 = new Ejercito(2);
-
+                System.out.println("****************************************************");
+                System.out.println("Los soldados creados para el ejercito Rojo");    
+                System.out.println("****************************************************"); 
+                Ejercito e2 = new Ejercito(2); 
                 Ventana.this.asignarAlTablero(e1);
                 Ventana.this.asignarAlTablero(e2);
+                terminalGUI1.mostrarEnVentana();
             }
         });
         menuArchivo.add(nPartida);

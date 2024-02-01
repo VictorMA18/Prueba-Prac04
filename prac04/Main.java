@@ -14,13 +14,26 @@ public class Main /* extends Application */ {
     public static void main(String[] args) {
         partidaRapida();
     }
-
     public static void partidaRapida() {
         Ventana v = new Ventana();
+        // Crea la instancia de la GUI
+        TerminalGUI terminalGUI = new TerminalGUI();
+
+        // Muestra la ventana
+        terminalGUI.setVisible(true);
+
+        // Simula la información que se imprimiría en el terminal
+        System.out.println("****************************************************");
+        System.out.println("Los soldados creados para el ejercito Azul");
+        System.out.println("****************************************************"); 
         Ejercito e1 = new Ejercito(1);
-        Ejercito e2 = new Ejercito(2);
+        System.out.println("****************************************************");
+        System.out.println("Los soldados creados para el ejercito Rojo");    
+        System.out.println("****************************************************"); 
+        Ejercito e2 = new Ejercito(2); 
         v.asignarAlTablero(e1);
         v.asignarAlTablero(e2);
+        terminalGUI.mostrarEnVentana();
     }
 
     /*

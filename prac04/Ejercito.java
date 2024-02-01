@@ -11,7 +11,25 @@ public class Ejercito {
         for (int i = 0; i < e.length; i++) {
             e[i] = crearSoldado();
             e[i].setNombre(e[i].getNombre() + reino + "x" + String.valueOf(i));
-
+            System.out.println("****************************************************");
+            switch (e[i].getTipo()) {
+                case 0:
+                    System.out.println("La informacion del Arquero creado : ");  
+                    break;
+                case 1:
+                    System.out.println("La informacion del Caballero creado : ");  
+                    break;
+                case 2:
+                    System.out.println("La informacion del Espadachin creado : ");  
+                    break;
+                case 3:
+                    System.out.println("La informacion del Lancero creado : ");  
+                    break;    
+                default:
+                    break;
+            }
+            System.out.println(e[i].toString());
+            System.out.println("****************************************************");
         }
         if (reino == 1) {
             this.c = Color.BLUE;
@@ -28,24 +46,28 @@ public class Ejercito {
             Arquero a = new Arquero();
             a.setNombre("Arco");
             a.setTipo(op);
+            System.out.println("Se unio a la batalla un Arquero");
             return a;
         }
         if (op == 1) {
             Caballero c = new Caballero();
             c.setNombre("Cabo");
             c.setTipo(op);
+            System.out.println("Se unio a la batalla un Caballero");
             return c;
         }
         if (op == 2) {
             Espadachin e = new Espadachin();
             e.setNombre("Espa");
             e.setTipo(op);
+            System.out.println("Se unio a la batalla un Espadachin");
             return e;
         }
         if (op == 3) {
             Lancero l = new Lancero();
             l.setNombre("Lano");
             l.setTipo(op);
+            System.out.println("Se unio a la batalla un Lancero");
             return l;
         }
         return null;
