@@ -12,10 +12,7 @@ import javafx.event.EventHandler;
 */
 public class Main /* extends Application */ {
     public static void main(String[] args) {
-        // boton partida rapida
-        // partidaRapida();
-        // boton partida personalizada
-        partidaPersonalizada();
+        partidaRapida();
     }
 
     public static void partidaRapida() {
@@ -26,9 +23,6 @@ public class Main /* extends Application */ {
         v.asignarAlTablero(e2);
     }
 
-    public static void partidaPersonalizada() {
-        VPersonalizada vp = new VPersonalizada();
-    }
     /*
      * public static void main(String[] args) {
      * launch(args);

@@ -58,6 +58,7 @@ public class Ejercito {
     public Color getColor() {
         return this.c;
     }
+
     public int getReino() {
         return reino;
     }
