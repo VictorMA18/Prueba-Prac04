@@ -13,9 +13,9 @@ import javafx.event.EventHandler;
 public class Main /* extends Application */ {
     public static void main(String[] args) {
         // boton partida rapida
-        partidaRapida();
+        // partidaRapida();
         // boton partida personalizada
-        // partidaPersonalizada();
+        partidaPersonalizada();
     }
 
     public static void partidaRapida() {
@@ -27,7 +27,7 @@ public class Main /* extends Application */ {
     }
 
     public static void partidaPersonalizada() {
-
+        VPersonalizada vp = new VPersonalizada();
     }
     /*
      * public static void main(String[] args) {

@@ -21,7 +21,6 @@ public class Ventana extends JFrame {
         setSize(650, 650);
         // setLayout ordena los casilleros[x][y] de forma automatica en una tablero de
         // 10x10
-        // no es necesario asignar un localización a cada casillero
         setLayout(new GridLayout(10, 10));
         barraDeMenu();
         // se ingresan y redimensionan las imagenes a iconos de 50x50 px
