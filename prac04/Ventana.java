@@ -29,8 +29,8 @@ public class Ventana extends JFrame {
         // se inicializa los casilleros y se generan mismos eventos (de movimiento) para
         // cada boton
         generarTablero();
-        j1 = new Jugador("Jugador Azul", Color.blue, 1);
-        j2 = new Jugador("Jugador Rojo", Color.red, 2);
+        j1 = new Jugador("Jugador Azul", Color.blue);
+        j2 = new Jugador("Jugador Rojo", Color.red);
         jActual = j1;
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
