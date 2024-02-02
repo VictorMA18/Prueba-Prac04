@@ -29,6 +29,7 @@ public class Ejercito {
                     break;
             }
             System.out.println(e[i].toString());
+			WriteLog.writeFile("Se creo el Soldado: " + e[i].getNombre() + " del ejercito " + reino);	//Registro en Log
             System.out.println("****************************************************");
         }
         if (reino == 1) {

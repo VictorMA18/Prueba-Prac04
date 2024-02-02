@@ -236,11 +236,13 @@ public class Ventana extends JFrame {
         if (cantidadAzul == 0) {
             JOptionPane.showMessageDialog(rootPane, "Gana rojo", getTitle(), 0);
             bloquearTablero();
+			WriteLog.writeFile("Todos los soldados azules han muerto. ¡Gana el jugador rojo!");
 
         }
         if (cantidadRoja == 0) {
             JOptionPane.showMessageDialog(rootPane, "Gana azul", getTitle(), 0);
             bloquearTablero();
+			WriteLog.writeFile("Todos los soldados rojos han muerto. ¡Gana el jugador azul!");
         }
     }
 
@@ -257,6 +259,7 @@ public class Ventana extends JFrame {
         origen.putClientProperty("soldado", null);
         origen.putClientProperty("color", null);
         origen.setBorder(BorderFactory.createLineBorder(Color.black));
+		WriteLog.writeFile("Se movio el soldado: " + soldado.getNombre());	//Registro en log
 
     }
 
@@ -344,10 +347,14 @@ public class Ventana extends JFrame {
             if (vidaTotal1 <= 0) {
                 s2.setVida(vidaTotal2);
                 b2.putClientProperty("soldado", s2);
+				WriteLog.writeFile("El movio el soldado: " + s1.getNombre());	//Registro en Log
+				WriteLog.writeFile("El soldado " + s1.getNombre() + " murio en la lucha");	//Registro en Log
                 return b2;
             } else if (vidaTotal2 <= 0) {
                 s1.setVida(vidaTotal1);
                 b1.putClientProperty("soldado", s1);
+				WriteLog.writeFile("El movio el soldado: " + s1.getNombre());	//Registro en Log
+				WriteLog.writeFile("El soldado " + s2.getNombre() + " murio en la lucha");	//Registro en Log
                 return b1;
             }
         }

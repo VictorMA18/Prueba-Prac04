@@ -12,10 +12,12 @@ import javafx.event.EventHandler;
 */
 public class Main /* extends Application */ {
     public static void main(String[] args) {
-        partidaRapida();
+        Conectar conexion1 = new Conectar();
+		conexion1.conexion();
+		partidaRapida();
     }
     public static void partidaRapida() {
-        Ventana v = new Ventana();
+		Ventana v = new Ventana();
         // Crea la instancia de la GUI
         TerminalGUI terminalGUI = new TerminalGUI();
 
