@@ -4,7 +4,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import javax.swing.*;
 
-
 public class Ventana extends JFrame {
 
     ImageIcon imgLancero;
@@ -30,6 +29,7 @@ public class Ventana extends JFrame {
         // se inicializa los casilleros y se generan mismos eventos (de movimiento) para
         // cada boton
         generarTablero();
+        WriteLog.writeFile("***Se inicio una nueva partida***");
         j1 = new Jugador("Jugador Azul", Color.blue);
         j2 = new Jugador("Jugador Rojo", Color.red);
         jActual = j1;
@@ -61,20 +61,21 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetearTablero();
+                WriteLog.writeFile("***Se inicio una nueva partida***");
                 TerminalGUI terminalGUI1 = new TerminalGUI();
                 // Muestra la ventana
                 terminalGUI1.setVisible(true);
                 System.out.println("****************************************************");
-                System.out.println("Se inicio una nueva partida");
-                System.out.println("****************************************************");         
+                System.out.println("***Se inicio una nueva partida***");
+                System.out.println("****************************************************");
                 System.out.println("****************************************************");
                 System.out.println("Los soldados creados para el ejercito Azul");
-                System.out.println("****************************************************"); 
+                System.out.println("****************************************************");
                 Ejercito e1 = new Ejercito(1);
                 System.out.println("****************************************************");
-                System.out.println("Los soldados creados para el ejercito Rojo");    
-                System.out.println("****************************************************"); 
-                Ejercito e2 = new Ejercito(2); 
+                System.out.println("Los soldados creados para el ejercito Rojo");
+                System.out.println("****************************************************");
+                Ejercito e2 = new Ejercito(2);
                 Ventana.this.asignarAlTablero(e1);
                 Ventana.this.asignarAlTablero(e2);
                 terminalGUI1.mostrarEnVentana();
@@ -169,6 +170,13 @@ public class Ventana extends JFrame {
                                     // luego se posiciona al ganador
                                     JButton ganador = lucha(origen, destino);
                                     if (ganador == destino) {
+                                        Soldado soldado = (Soldado) origen.getClientProperty("soldado");
+                                        WriteLog.writeFile(soldado.getNombre() + " se movio a la posición: ("
+                                                + getX(destino) + "," + getY(destino) + ")"); // Registro en log
+                                    }
+
+                                    if (ganador == destino) {
+
                                         origen.putClientProperty("soldado", null);
                                         origen.putClientProperty("color", null);
                                         origen.setIcon(null);
@@ -236,19 +244,20 @@ public class Ventana extends JFrame {
         if (cantidadAzul == 0) {
             JOptionPane.showMessageDialog(rootPane, "Gana rojo", getTitle(), 0);
             bloquearTablero();
-			WriteLog.writeFile("Todos los soldados azules han muerto. ¡Gana el jugador rojo!");
+            WriteLog.writeFile("Todos los soldados azules han muerto. ¡Gana el jugador rojo!");
 
         }
         if (cantidadRoja == 0) {
             JOptionPane.showMessageDialog(rootPane, "Gana azul", getTitle(), 0);
             bloquearTablero();
-			WriteLog.writeFile("Todos los soldados rojos han muerto. ¡Gana el jugador azul!");
+            WriteLog.writeFile("Todos los soldados rojos han muerto. ¡Gana el jugador azul!");
         }
     }
 
     // mueve los datos del casillero de origen al casillero de destino
     // luego se asignan valores nulos al casillero de origen
     private void mover() {
+
         Soldado soldado = (Soldado) origen.getClientProperty("soldado");
         Color colorOrigen = (Color) origen.getClientProperty("color");
         destino.putClientProperty("soldado", soldado);
@@ -259,7 +268,8 @@ public class Ventana extends JFrame {
         origen.putClientProperty("soldado", null);
         origen.putClientProperty("color", null);
         origen.setBorder(BorderFactory.createLineBorder(Color.black));
-		WriteLog.writeFile("Se movio el soldado: " + soldado.getNombre());	//Registro en log
+        WriteLog.writeFile(soldado.getNombre() + " se movio a la posición: ("
+                + getX(destino) + "," + getY(destino) + ")"); // Registro en log
 
     }
 
@@ -285,9 +295,10 @@ public class Ventana extends JFrame {
         return -1;
     }
 
-    // este meotodo asigna los ejercitos creados a un casillero aleatorio en el
+    // este metodo asigna los ejercitos creados a un casillero aleatorio en el
     // tablero
     public void asignarAlTablero(Ejercito e) {
+
         Soldado[] ejercito = e.getSoldados();
         int i = 0, x, y;
         while (i < ejercito.length) {
@@ -347,14 +358,12 @@ public class Ventana extends JFrame {
             if (vidaTotal1 <= 0) {
                 s2.setVida(vidaTotal2);
                 b2.putClientProperty("soldado", s2);
-				WriteLog.writeFile("El movio el soldado: " + s1.getNombre());	//Registro en Log
-				WriteLog.writeFile("El soldado " + s1.getNombre() + " murio en la lucha");	//Registro en Log
+                WriteLog.writeFile("El soldado " + s1.getNombre() + " murio en la lucha"); // Registro en Log
                 return b2;
             } else if (vidaTotal2 <= 0) {
                 s1.setVida(vidaTotal1);
                 b1.putClientProperty("soldado", s1);
-				WriteLog.writeFile("El movio el soldado: " + s1.getNombre());	//Registro en Log
-				WriteLog.writeFile("El soldado " + s2.getNombre() + " murio en la lucha");	//Registro en Log
+                WriteLog.writeFile("El soldado " + s2.getNombre() + " murio en la lucha"); // Registro en Log
                 return b1;
             }
         }
